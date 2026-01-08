@@ -8,6 +8,12 @@ from pydantic import BaseModel
 from typing import List
 from datetime import datetime
 import os
+import sys
+
+# Ensure backend directory is in python path so local imports work
+# regardless of where the script is run from (root vs backend dir)
+sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+
 import tempfile
 import llm_service
 
