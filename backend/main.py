@@ -1,5 +1,7 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 from sqlalchemy.orm import Session, sessionmaker, declarative_base
 from sqlalchemy import create_engine, Column, Integer, String, DateTime
 from pydantic import BaseModel
@@ -8,6 +10,12 @@ from datetime import datetime
 import os
 import tempfile
 import llm_service
+
+# Define static path (Robust for both local and prod)
+# Assumes structure: /root/backend/main.py and /root/frontend/
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+FRONTEND_DIR = os.path.join(BASE_DIR, "frontend")
+
 
 # ==========================
 # 1. DATABASE CONFIGURATION
@@ -88,7 +96,20 @@ class AdminReviewList(BaseModel):
 # ==========================
 app = FastAPI(title="Feedback AI System", version="1.0")
 
-# CORS configuration
+# Mount static files (CSS, JS)
+app.mount("/css", StaticFiles(directory=os.path.join(FRONTEND_DIR, "css")), name="css")
+app.mount("/js", StaticFiles(directory=os.path.join(FRONTEND_DIR, "js")), name="js")
+
+# Serve HTML Pages
+@app.get("/")
+async def read_root():
+    return FileResponse(os.path.join(FRONTEND_DIR, "index.html"))
+
+@app.get("/admin")
+async def read_admin():
+    return FileResponse(os.path.join(FRONTEND_DIR, "admin.html"))
+
+# CORS configuration (Open for simplicity, though less critical now)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],

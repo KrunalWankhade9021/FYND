@@ -16,8 +16,7 @@
                 Please rate your experience and leave a short review.
             </p>
 
-            <!-- Using form with onsubmit="return false" prevents reload even if enter is pressed -->
-            <form id="feedbackForm" onsubmit="return false;">
+            <div id="feedbackForm">
                 <div class="form-group">
                     <label>Rating</label>
                     <div class="star-rating" id="starContainer">
@@ -37,7 +36,7 @@
                 </div>
 
                 <button type="button" id="submitBtn">Submit Feedback</button>
-            </form>
+            </div>
 
             <div id="responseContainer" class="response-box hidden">
                 <strong>Our Response:</strong>

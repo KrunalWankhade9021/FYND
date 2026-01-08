@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8000";
+const API_URL = ""; // Relative URL (Same Domain)
 
 document.addEventListener('DOMContentLoaded', () => {
     const starContainer = document.getElementById('starContainer');
