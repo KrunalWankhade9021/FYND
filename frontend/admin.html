@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Feedback System</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .container {
+            max-width: 1000px;
+        }
+
+        /* Wider container for admin */
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Admin Dashboard</h1>
+
+        <div style="display: flex; justify-content: space-between; margin-bottom: 1rem; align-items: center;">
+            <span><strong id="reviewCount">0</strong> Reviews found</span>
+            <button id="refreshBtn" style="width: auto; padding: 0.5rem 1rem;">Refresh Data</button>
+        </div>
+
+        <div id="reviewsList" class="review-list">
+            <!-- Reviews will be populated here -->
+            <p style="text-align: center; color: #6b7280;">Loading reviews...</p>
+        </div>
+    </div>
+    <script src="js/admin.js"></script>
+</body>
+
+</html>

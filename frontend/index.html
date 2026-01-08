@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Feedback</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="card">
+            <h1>We Value Your Feedback</h1>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 2rem;">
+                Please rate your experience and leave a short review.
+            </p>
+
+            <!-- Using form with onsubmit="return false" prevents reload even if enter is pressed -->
+            <form id="feedbackForm" onsubmit="return false;">
+                <div class="form-group">
+                    <label>Rating</label>
+                    <div class="star-rating" id="starContainer">
+                        <span class="star" data-value="1">★</span>
+                        <span class="star" data-value="2">★</span>
+                        <span class="star" data-value="3">★</span>
+                        <span class="star" data-value="4">★</span>
+                        <span class="star" data-value="5">★</span>
+                    </div>
+                    <input type="hidden" id="ratingValue" name="rating" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="review">Your Review</label>
+                    <textarea id="review" name="review" placeholder="Tell us about your experience..."
+                        required></textarea>
+                </div>
+
+                <button type="button" id="submitBtn">Submit Feedback</button>
+            </form>
+
+            <div id="responseContainer" class="response-box hidden">
+                <strong>Our Response:</strong>
+                <p id="responseText"></p>
+            </div>
+        </div>
+    </div>
+    <script src="js/user.js?v=2"></script>
+</body>
+
+</html>
